@@ -1,7 +1,7 @@
 # Django Exchange API
 
 
-### Installation
+## `Installation`
 1. Clone repository `[...]` 
 
     (or with HTTPS `git clone [...]`)
@@ -13,13 +13,19 @@ Create venv and install dev dependencies:
 3. `pip install -r requirements.txt`
 4. `pip install --upgrade setuptools`
 
-### Run application
+## `Run application`
 1. `python backend/manage.py makemigrations`
 2. `python backend/manage.py migrate`
 3. `python backend/manage.py runserver`
 
 
-### Management commands
+## `Reset script`
+Use `./reset.sh` to create new database, apply migrations and load default data
+
+don't forget to use chmod +x reset.sh :)
+
+
+## `Management commands`
 
 - Create currencies declared in settings:
 
@@ -34,7 +40,7 @@ Create venv and install dev dependencies:
 `python backend/manage.py load_yahoo_finance_data`
 
 
-### Swagger
+## `Swagger`
 
 Test API with swagger: http://localhost:8000/swagger
 
@@ -48,7 +54,7 @@ Example:
 ![img.png](docs/images/img.png)
 
 #
-### Tests
+## `Tests`
 
 To run tests:
 
