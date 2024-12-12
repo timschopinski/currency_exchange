@@ -1,0 +1,15 @@
+Django==5.0
+django-cors-headers==4.3.1
+django-environ==0.11.2
+django-filter==24.3
+django-silk==5.0.4
+django-rest-swagger==2.2.0
+djangorestframework==3.14.0
+djangorestframework-simplejwt==5.3.1
+drf-yasg==1.21.7
+django-extensions==3.2.3
+ipython==8.30.0
+yfinance==0.2.50
+Faker==19.12.1
+factory-boy==3.3.0
+freezegun==0.3.4
