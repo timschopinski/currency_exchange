@@ -9,10 +9,12 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from celery.schedules import crontab
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -49,6 +51,7 @@ THIRD_PARTY_APPS = [
     'silk',
     'django_filters',
     'django_extensions',
+    'django_celery_beat',
 ]
 
 PROJECT_APPS = [
@@ -59,8 +62,10 @@ PROJECT_APPS = [
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
+    'silk.middleware.SilkyMiddleware',
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -143,4 +148,14 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # currencies app settings
 # -----------------------
-CURRENCIES = ['PLN', 'EUR']
+CURRENCIES = ['PLN', 'EUR', 'USD', 'JPY']
+
+
+# Celery settings
+# -----------------------
+REDIS_URL = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = REDIS_URL
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'

@@ -18,11 +18,18 @@ Create venv and install dev dependencies:
 2. `python backend/manage.py migrate`
 3. `python backend/manage.py runserver`
 
+## `Init script`
+Use `./init.sh` to apply migrations and load default data
 
-## `Reset script`
-Use `./reset.sh` to create new database, apply migrations and load default data
+don't forget to use chmod +x init.sh :)
 
-don't forget to use chmod +x reset.sh :)
+
+## `Run celery tasks`
+1. `redis-server`
+2. `python -m celery --workdir backend -A backend.config worker --loglevel=info`
+3. `python -m celery --workdir backend -A backend.config beat --loglevel=info`
+4. `python backend/manage.py setup_periodic_tasks`
+
 
 
 ## `Management commands`
