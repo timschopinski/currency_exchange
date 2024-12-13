@@ -14,7 +14,7 @@ class Command(BaseCommand):
 
         PeriodicTask.objects.get_or_create(
             interval=schedule,
-            name='Run my periodic task every 5 minutes',
+            name='Sync exchange rates from yahoo every 5 minutes',
             task='currencies.tasks.sync_exchange_rates_from_yahoo',
         )
 
