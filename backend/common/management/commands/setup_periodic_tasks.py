@@ -15,7 +15,7 @@ class Command(BaseCommand):
         PeriodicTask.objects.get_or_create(
             interval=schedule,
             name='Run my periodic task every 5 minutes',
-            task='myapp.tasks.my_periodic_task',
+            task='currencies.tasks.my_periodic_task',
         )
 
         self.stdout.write(self.style.SUCCESS('Periodic tasks have been set up.'))
